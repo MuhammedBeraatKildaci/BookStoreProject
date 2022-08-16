@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:700');
+@keyframes showTopText {
+  0% { transform: translate3d(0, 100%, 0); }
+  40%, 60% { transform: translate3d(0, 50%, 0); }
+  100% { transform: translate3d(0, 0, 0); }
+}
+@keyframes showBottomText {
+  0% { transform: translate3d(0, -100%, 0); }
+  100% { transform: translate3d(0, 0, 0); }
+}
+.animated-title {
+  color: rgb(252, 249, 249);
+  font-family: Roboto, Arial, sans-serif;
+  height: 150vmin;
+  left: 55%;
+  position: absolute;
+  top: 60%;
+  transform: translate(-50%, -50%);
+  width: 80vmin;
+}
+.animated-title > div {
+  height: 50%;
+  overflow: hidden;
+  position: absolute;
+  left: 20vw;
+  width: 100%;
+}
+.animated-title > div div {
+  font-size: 9rem;
+  padding: 2rem 0;
+  position: absolute;
+}
+.animated-title > div div span {
+  display: block;
+}
+.animated-title > div.text-top {
+  border-bottom: 1vmin solid #fff;
+  top: 0;
+}
+.animated-title > div.text-top div {
+  animation: showTopText 1s;
+  animation-delay: 0.5s;
+  animation-fill-mode: forwards;
+  bottom: 0;
+  transform: translate(0, 100%);
+}
+.animated-title > div.text-top div span:first-child {
+  color: #767676;
+}
+.animated-title > div.text-bottom {
+  bottom: 0;
+}
+.animated-title > div.text-bottom .text-bottom-info {
+  animation: showBottomText 0.5s;
+  animation-delay: 1.75s;
+  animation-fill-mode: forwards;
+  top: 0;
+  transform: translate(0, -100%);
+}
+
+.home-head{
+  display: flex;
+}
+
+.home-top-section{
+  display: flex;
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #b78155;
+  margin: 20px;
+  padding: 20px;
+}
+
+.home-top-section>div{
+  margin:0 15px;
+}
+
+.book-background-image{
+  width: 70vw;
+  height: 100vh;
+}
+
+.book-head-text{
+  width: 60vw;
+  height: 80vh;
+  background-color: #b78155;
+  margin-top: 10vh;
+  margin-left: -25vw;
+}
+
+.MuiSvgIcon-root{
+  font-size: 28px !important;
+}
+
+.book-card-list-container{
+  margin: 20vh 0;
+  padding: 50px 0;
+}
+
+
+@media screen and (max-width: 1240px) {
+  .css-o2w69a-MuiTypography-root {
+    font-size: 2rem !important;
+  }
+  .css-gepadz-MuiTypography-root{
+    font-size: 1rem !important;
+  }
+  .book-head-text{
+    display: contents;
+  }
+  .book-background-image{
+    width: 100vw;
+    height: 100vh;
+  }
+}
+
+
+
