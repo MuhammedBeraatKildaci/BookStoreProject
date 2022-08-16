@@ -10,15 +10,21 @@ import "../styles/bookCard.css"
 import { Box, ButtonGroup } from '@mui/material';
 import { useDispatch } from 'react-redux'
 import { addToCart } from '../store/CartSlice';
+import { addToFavorite } from '../store/FavoriteSlice';
 
 
 
 export default function BookCardItem({ book }) {
   const cartDispatch = useDispatch()
+  const favoriteDispatch = useDispatch()
 
 
   const addToCartBook = (book) => {
     cartDispatch(addToCart(book))
+  }
+
+  const addToFavoriteBook = (book) => {
+    favoriteDispatch(addToFavorite(book))
   }
 
   return (
@@ -42,7 +48,7 @@ export default function BookCardItem({ book }) {
         </Box>
       </CardContent>
       <ButtonGroup>
-        <IconButton color='error' aria-label="add to favorites">
+        <IconButton color='error' aria-label="add to favorites" onClick={(e) => addToFavoriteBook(book)}>
           <FavoriteIcon />
           <Typography fontSize={12}>ADD TO FAVORITE</Typography>
         </IconButton>

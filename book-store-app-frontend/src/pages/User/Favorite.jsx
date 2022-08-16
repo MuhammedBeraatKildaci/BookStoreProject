@@ -1,24 +1,22 @@
-import { Avatar, Box, Button, ButtonGroup, Container, IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
+import { Avatar, ButtonGroup, Container, IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from '@mui/material';
 import React from 'react'
 import { Helmet } from 'react-helmet'
 import { useDispatch, useSelector } from 'react-redux';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import { useNavigate } from 'react-router-dom';
-import { removeFromCart } from '../../store/CartSlice';
+import { removeFromFavorite } from '../../store/FavoriteSlice';
 
 const Cart = () => {
-  const navigate =  useNavigate()
-  const cartDispatch = useDispatch()
-  const {cartItems} = useSelector(state=>state.cart)
-  const handleCartItemDelete = (book) => {
-    cartDispatch(removeFromCart(book))
+  const {favoriteItems} = useSelector(state=>state.favorite)
+  const favoriteDispatch = useDispatch()
+
+  const handleFavoriteItemDelete = (book) => {
+    favoriteDispatch(removeFromFavorite(book))
   }
-  
-  let total = 0;
+
   return (
     <div>
       <Helmet>
-        <title>CART</title>
+        <title>FAVORITE</title>
       </Helmet>
       <Container sx={{paddingTop:"30vh",paddingBottom:"30vh"}}>
       <TableContainer sx={{ m: 1, p: 1}} component={Paper}>
@@ -35,8 +33,7 @@ const Cart = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-          {cartItems.map((item,index) => {
-            total += item.book.price
+          {favoriteItems.map((item,index) => {
               return (
                 <TableRow key={index}>
                   <TableCell>{index+1}</TableCell>
@@ -49,7 +46,7 @@ const Cart = () => {
                   <TableCell>{item.book.category.categoryName}</TableCell>
                   <TableCell>
                     <ButtonGroup orientation='vertical'>
-                      <IconButton onClick = {() => handleCartItemDelete(item)}>
+                      <IconButton onClick = {(e) => handleFavoriteItemDelete(item)}>
                         <DeleteForeverIcon color={"error"}/>
                       </IconButton>
                     </ButtonGroup>
@@ -57,24 +54,10 @@ const Cart = () => {
                 </TableRow>
               );
             })}
-            <TableRow>
-              <TableCell colSpan={7}>
-                <Box sx={{display:'flex',justifyContent: 'space-around'}}>
-                <Typography variant="h4">Toplam</Typography>
-                <Typography variant="h6">{total}</Typography>
-                </Box>
-              </TableCell>
-            </TableRow>
-            <TableRow>
-              <TableCell colSpan={7}>
-                {total ===0 ? <Button onClick={()=>navigate("/")}sx={{marginLeft:'72%'}} variant="contained" color={'info'}>Continue Order</Button>:<Button sx={{marginLeft:'72%'}} variant="contained" color={'info'}>Payment</Button>}
-              </TableCell>
-            </TableRow>
           </TableBody>
         </Table>
       </TableContainer>
       </Container>
-      {console.log(cartItems)}
       </div>
   )
 }

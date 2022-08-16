@@ -5,15 +5,26 @@ import Login from "../pages/Auth/Login"
 import Register from "../pages/Auth/Register"
 
 import AdminLayout from "../pages/Admin/AdminLayout"
-import UserList from "../pages/Admin/UserList"
-import CategoryList from "../pages/Admin/CategoryList"
-import AuthorList from "../pages/Admin/AuthorList"
-import BookList from "../pages/Admin/BookList"
+
+import AuthorList from "../pages/Admin/Author/AuthorList"
+import AddAuthor from "../pages/Admin/Author/AddAuthor";
+import UpdateAuthor from "../pages/Admin/Author/UpdateAuthor";
+
+import UserList from "../pages/Admin/User/UserList"
+
+import CategoryList from "../pages/Admin/Category/CategoryList"
+import AddCategory from "../pages/Admin/Category/AddCategory";
+import UpdateCategory from "../pages/Admin/Category/UpdateCategory";
+
+import BookList from "../pages/Admin/Book/BookList"
+import AddBook from "../pages/Admin/Book/AddBook";
+import UpdateBook from "../pages/Admin/Book/UpdateBook";
 
 
 import UserLayout from "../pages/User/UserLayout"
 import HomePage from "../pages/User/HomePage"
 import Cart from "../pages/User/Cart"
+import Favorite from "../pages/User/Favorite"
 
 import PageNotFound from "../pages/PageNotFound"
 
@@ -34,6 +45,11 @@ let routePages=[
 				name: 'cart',
 				auth:true,
 				element: <Cart />
+			},
+			{
+				path: 'favorite',
+				name: 'favorite',
+				element: <Favorite />
 			},
 		]
 	},
@@ -63,22 +79,58 @@ let routePages=[
 			{
 				path: 'users',
 				name: 'users',
-				element: <UserList/>
+				element: <UserList/>,
 			},
 			{
 				path: 'authors',
 				name: 'authors',
-				element: <AuthorList />
+				element: <AuthorList />,
+				children:[
+					{
+						name:"addAuthor",
+						path:"add",
+						element:<AddAuthor/>
+					},
+					{
+						name:"updateAuthor",
+						path:"update",
+						element:<UpdateAuthor/>
+					}
+				]
 			},
             {
 				path: 'categories',
 				name: 'categories',
-				element: <CategoryList/>
+				element: <CategoryList/>,
+				children:[
+					{
+						name:"addCategory",
+						path:"add",
+						element:<AddCategory/>
+					},
+					{
+						name:"updateCategory",
+						path:"update",
+						element:<UpdateCategory/>
+					}
+				]
 			},
 			{
 				path: 'books',
 				name: 'books',
-				element: <BookList />
+				element: <BookList />,
+				children:[
+					{
+						name:"addBook",
+						path:"add",
+						element:<AddBook/>
+					},
+					{
+						name:"updateBook",
+						path:"update",
+						element:<UpdateBook/>
+					}
+				]
 			}
 		]
 	},

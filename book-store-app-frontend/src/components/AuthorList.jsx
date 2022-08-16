@@ -11,7 +11,7 @@ const AuthorList = ({authors}) => {
           <Tooltip key={id} title={`${firstName} ${lastName}`}>
             <Avatar
               alt={`${firstName} ${lastName}`}
-              src={`/authors/${id % 20}.jpg`}
+              src={`images/authors/${id % 20}.jpg`}
             />
           </Tooltip>
         );

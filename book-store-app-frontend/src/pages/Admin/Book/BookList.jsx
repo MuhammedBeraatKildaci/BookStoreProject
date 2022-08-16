@@ -8,11 +8,11 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import SimpleFab from "../../components/SimpleFab";
+import SimpleFab from "../../../components/SimpleFab";
 import { useDispatch} from 'react-redux';
-import {  getAllBook } from '../../services/BookService';
-import { deleteOneBook } from '../../store/BookSlice';
-import AuthorList from '../../components/AuthorList';
+import {  getAllBook } from '../../../services/BookService';
+import { deleteOneBook, putOneBook } from '../../../store/BookSlice';
+import AuthorList from '../../../components/AuthorList';
 
 const BookList = () => {
 
@@ -22,6 +22,9 @@ const BookList = () => {
     getAllBook().then(resp=>setbooks(resp))
   }, [])
   
+  const handleEdit=(id,book)=>{
+    bookDispatch(putOneBook(id,book))
+  }
   
   const handleRemove=(id)=>{
     bookDispatch(deleteOneBook(id))
@@ -57,7 +60,7 @@ const BookList = () => {
                 <TableRow key={id}>
                   <TableCell>{id}</TableCell>
                   <TableCell>
-                    <Avatar src={`/books/${id % 121}.jpg`}></Avatar>
+                    <Avatar src={`images/books/${id % 121}.jpg`}></Avatar>
                   </TableCell>
                   <TableCell>{title}</TableCell>
                   <TableCell>{price}</TableCell>
@@ -68,7 +71,7 @@ const BookList = () => {
                   <TableCell>{category.categoryName}</TableCell>
                   <TableCell>
                     <ButtonGroup orientation='vertical'>
-                      <Button>Edit</Button>
+                      <Button onClick={()=>handleEdit(id)}>Edit</Button>
                       <Button onClick = {() => handleRemove(id)}>
                         Remove
                       </Button>

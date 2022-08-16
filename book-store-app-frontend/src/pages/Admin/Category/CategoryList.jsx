@@ -2,9 +2,9 @@ import { Button, ButtonGroup, Container, Table, TableBody, TableCell, TableConta
 import React, { useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet'
 import { useDispatch } from 'react-redux';
-import SimpleFab from '../../components/SimpleFab';
-import { getAllCategory } from '../../services/CategoryService';
-import { deleteOneCategory } from '../../store/CategorySlice';
+import SimpleFab from '../../../components/SimpleFab';
+import { getAllCategory } from '../../../services/CategoryService';
+import { deleteOneCategory } from '../../../store/CategorySlice';
 
 const CategoryList = () => {
 

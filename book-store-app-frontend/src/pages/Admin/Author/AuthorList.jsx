@@ -8,10 +8,10 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import SimpleFab from "../../components/SimpleFab";
-import { getAllAuthor } from '../../services/AuthorService';
+import SimpleFab from "../../../components/SimpleFab";
+import { getAllAuthor } from '../../../services/AuthorService';
 import { useDispatch} from 'react-redux';
-import { deleteOneAuthor } from '../../store/AuthorSlice';
+import { deleteOneAuthor } from '../../../store/AuthorSlice';
 
 const AuthorList = () => {
   const authorDispatch = useDispatch()
@@ -56,7 +56,7 @@ const AuthorList = () => {
                   {author.id}
                 </TableCell>
                 <TableCell align='left'>
-                  <Avatar src={`/authors/${author.id%20}.jpg`}></Avatar>
+                  <Avatar src={`images/authors/${author.id%20}.jpg`}></Avatar>
                 </TableCell>
                 <TableCell align='left'>{author.firstName}</TableCell>
                 <TableCell align='left'>{author.lastName}</TableCell>
