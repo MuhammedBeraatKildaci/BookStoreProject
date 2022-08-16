@@ -5,7 +5,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import LoginIcon from '@mui/icons-material/Login';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import ProfileBtn from './ProfileBtn';
+import LogoutIcon from '@mui/icons-material/Logout';
 import Toggle from './Toggle';
 import { useContext } from "react";
 import { ThemeContext } from "../context/ThemeContext";
@@ -16,14 +16,25 @@ const HomeHeadSection = () => {
 
     const theme = useContext(ThemeContext);
     const darkMode = theme.state.darkMode;
+
+    const handleLogOut=()=>{
+        localStorage.removeItem("user")
+        navigate("/auth/login")
+    }
     return (
         <div className="home-head">
             <div className="home-top-section">
                 <div>
-                    {localStorage.getItem("user") ? <ProfileBtn /> :
+                    {localStorage.getItem("user") ?
+                        <IconButton onClick={() => handleLogOut()}>
+                            <Badge badgeContent={"LogOut"} color="warning">
+                                <LogoutIcon sx={{ color: darkMode && "#fff" }} />
+                            </Badge>
+                        </IconButton>
+                        :
                         <IconButton onClick={() => navigate("/auth/login")}>
-                            <Badge badgeContent={"Login"} color="info">
-                            <LoginIcon sx={{ color: darkMode && "#fff" }}/>
+                            <Badge badgeContent={"Login"} color="warning">
+                                <LoginIcon sx={{ color: darkMode && "#fff" }} />
                             </Badge>
                         </IconButton>
                     }

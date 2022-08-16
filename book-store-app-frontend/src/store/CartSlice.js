@@ -10,8 +10,6 @@ const CartSlice = createSlice({
     reducers: {
         addToCart: (state, action) => {
             let book = state.cartItems.find(item=>item.id===action.payload.id)
-            console.log(state.cartItems.map(item=>console.log(item)));
-            console.log(book);
             if (book) {
                 book.quantity++
                 return{
@@ -20,7 +18,7 @@ const CartSlice = createSlice({
             } else {
                 return {
                     ...state,
-                    cartItems: [...state.cartItems, { quantity: 1, product: action.payload }],
+                    cartItems: [...state.cartItems, { quantity: 1, book: action.payload }],
                   };
             }
         },
